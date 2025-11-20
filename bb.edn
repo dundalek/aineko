@@ -1,0 +1,22 @@
+{:bbin/bin {aineko {:main-opts ["-m" "aineko.main"]}}
+
+ :tasks
+ {test:once
+  {:doc "Run tests once"
+   :task (apply (requiring-resolve 'lazytest.main/-main) *command-line-args*)
+   :extra-paths ["src" "test"]
+   :extra-deps {io.github.noahtheduke/lazytest {:mvn/version "1.8.0"}}}
+
+  test
+  {:doc "Run tests in watch mode"
+   ;; -n to execute without shell as a workaround for now showing output inside sandbox
+   :task (apply shell "watchexec -w src -w test -n -- bb test:once" *command-line-args*)}
+
+  test:coverage
+  {:doc "Generate test coverage report"
+   :task (clojure "-X:coverage")}
+
+  aineko
+  {:doc "Run aineko CLI"
+   :task (apply (requiring-resolve 'aineko.main/-main) *command-line-args*)
+   :extra-paths ["src"]}}}

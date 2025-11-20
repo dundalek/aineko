@@ -1,0 +1,5 @@
+.claude
+.beads
+.clj-kondo
+/target
+flake.lock
