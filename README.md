@@ -40,13 +40,7 @@ bbin install io.github.dundalek/aineko
 Install using Nix (includes prerequisites):
 
 ```sh
-nix profile install github:dundalek/aineko
-```
-
-Or run it directly without installing:
-
-```sh
-nix run github:dundalek/aineko
+nix profile add github:dundalek/aineko
 ```
 
 ### Quick Start
