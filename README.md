@@ -130,7 +130,7 @@ I also find useful to include `$SHELL` to drop into shell afterwards in case cla
 
 Create `~/.config/zellij/layouts/claude.kdl`:
 
-```kdl
+```
 layout {
   pane command="sh" close_on_exit=true {
     args "-c" "claude; \"$SHELL\""
