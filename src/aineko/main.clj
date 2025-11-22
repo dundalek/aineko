@@ -254,14 +254,17 @@
 
 (defn create-zellij-session
   "Creates a new detached Zellij session with the given name.
-   Accepts optional socket-path and seance-id to set as env vars."
+   Accepts optional socket-path and seance-id to set as env vars.
+   Uses AINEKO_ZELLIJ_LAYOUT env var to specify layout if set."
   [session-name & {:keys [socket-path seance-id]}]
   (let [env (cond-> {}
               socket-path (assoc "AINEKO_SOCKET_PATH" socket-path)
-              seance-id (assoc "AINEKO_SEANCE_ID" seance-id))]
-    (if (seq env)
-      (shell {:extra-env env} "zellij" "attach" session-name "--create-background")
-      (shell "zellij" "attach" session-name "--create-background"))))
+              seance-id (assoc "AINEKO_SEANCE_ID" seance-id))
+        layout (System/getenv "AINEKO_ZELLIJ_LAYOUT")
+        base-args (concat ["zellij"]
+                          (when layout ["--layout" layout])
+                          ["attach" session-name "--create-background"])]
+    (apply shell {:extra-env env} base-args)))
 
 (defn attach-to-session
   "Attaches to an existing Zellij session.

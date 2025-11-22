@@ -123,7 +123,31 @@ Status indicators:
 
 ### Tips
 
-Use complementary tools:
+**Change the default command**
+
+For example to automatically start `claude`.
+I also find useful to include `$SHELL` to drop into shell afterwards in case claude needs to get restarted without quiting the seance.
+
+Create `~/.config/zellij/layouts/claude.kdl`:
+
+```kdl
+layout {
+  pane command="sh" close_on_exit=true {
+    args "-c" "claude; \"$SHELL\""
+  }
+  pane size=1 borderless=true {
+      plugin location="zellij:status-bar"
+  }
+}
+```
+
+Then set the env variable which will be used to pass the layout to zellij using the `--layout` parameter;
+
+```
+export AINEKO_ZELLIJ_LAYOUT=claude
+```
+
+**Use complementary tools**
 
 - [git worktrees](https://git-scm.com/docs/git-worktree) to work on multiple tasks in the same project in parallel
   - After adding and switching to a worktree, open a new seance
