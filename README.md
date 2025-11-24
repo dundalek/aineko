@@ -12,6 +12,10 @@ Use those free moments on your phone throughout the day productively instead of 
 - **Asynchronous workflow**: Do other things while waiting for agents to complete their work.
 - **Parallelize tasks**: Let agents work on multiple projects and tasks in parallel, switch between sessions as they complete or require input.
 
+| Monitor sessions | Claude on mobile | Embedded inside IDE or editor |
+| - | - | - |
+| ![screen-watch](https://github.com/user-attachments/assets/e944d59c-4509-4216-8992-6bc5df4cbe95) | ![screen-claude](https://github.com/user-attachments/assets/bfa23e7d-f657-4c5b-9dc0-5e90849d1683) | ![screen-neovim](https://github.com/user-attachments/assets/77eb5442-f6b2-4f6b-b64a-61c6322ea708) |
+
 **Status**: 🚧 [Scrappy Fiddle](https://dundalek.com/entropic/scrappy-fiddles) 🚧  
 Claude code used heavily, once feature set settles will need code cleanup pass, weeding out bugs and improving error handling.
 
